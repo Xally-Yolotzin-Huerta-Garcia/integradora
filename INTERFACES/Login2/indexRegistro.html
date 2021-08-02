@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Registro Sonríe Siempre</title>
+	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+	<main>
+		<form action="" class="formulario" id="formulario">
+			<!-- Grupo: Nombre -->
+			<div class="formulario__grupo" id="grupo__nombre">
+				<label for="nombre" class="formulario__label">Nombre</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="John Doe">
+					
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El nombre solo debe contener letras (minimo 3).</p>
+			</div>
+			<!-- Grupo: Apellido Paterno -->
+			<div class="formulario__grupo" id="grupo__apellidop">
+				<label for="apellidop" class="formulario__label">Apellido Paterno</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="apellidop" id="apellidop" placeholder="Jackson">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El apellido paterno solo debe contener letras (minimo 3).</p>
+			</div>
+			<!-- Grupo: Apellido Materno -->
+			<div class="formulario__grupo" id="grupo__apellidom">
+				<label for="apellidom" class="formulario__label">Apellido Materno</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="apellidom" id="apellidom" placeholder="Jackson">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El apellido materno solo debe contener letras (minimo 3).</p>
+			</div>
+			<!-- Grupo: Edad -->
+			<b><p class="text-left"> Edad
+			<select></b>
+                     <b><option>18</option>
+                        <option>19</option>
+						<option>20</option></b>
+				        <option>21</option>
+						<option>22</option>
+				        <option>23</option>
+						<option>24</option>
+				        <option>25</option>
+						<option>26</option>
+				        <option>27</option>
+						<option>28</option>
+				        <option>29</option>
+						<option>30</option>
+				        <option>31</option>
+						<option>32</option>
+				        <option>33</option>
+						<option>34</option>
+				        <option>35</option>
+						<option>36</option>
+				        <option>37</option>
+						<option>38</option>
+				        <option>39</option>
+						<option>40</option>
+				        <option>41</option>
+						<option>42</option>
+				        <option>43</option>
+						<option>44</option>
+				        <option>45</option>
+						<option>46</option>
+				        <option>47</option>
+						<option>48</option>
+				        <option>49</option>
+						<option>50</option>
+				        <option>51</option>
+						<option>52</option>
+				        <option>53</option>
+						<option>54</option>
+				        <option>55</option>
+						<option>56</option>
+				        <option>57</option>
+						<option>58</option>
+				        <option>59</option></p>
+				        </select></b>
+			<!-- Sexo -->
+			<b><p class="text-left"> Sexo
+			<select></b>
+                       <b><option>Masculino</option>
+                        <option>Femenino</option>
+						   <option>No especificar</option></b>
+				</select></b>
+	        <!--Correo-->
+			<div class="formulario__grupo" id="grupo__correo">
+				<label for="correo" class="formulario__label">Correo Electrónico</label>
+				<div class="formulario__grupo-input">
+					<input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El correo electrónico solo puede contener los siguientes caracteres: _, ., @.</p>
+			</div>
+
+			<!-- Grupo: Teléfono -->
+			<div class="formulario__grupo" id="grupo__telefono">
+				<label for="telefono" class="formulario__label">Teléfono</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="telefono" id="telefono" placeholder="5564231700">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El telefono solo puede contener numeros (máximo 10).</p>
+			</div>
+	         
+           
+	
+			<div class="formulario__grupo formulario__grupo-btn-enviar">
+				<button type="submit" class="formulario__btn">Enviar</button>
+				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+			</div>
+	        <div>
+				<p><a href="indexE.html">¿Ya tienes una cuenta? Ingresa aquí</a></p>
+		  </div>
+		</form>
+	</main>
+
+	<script src="js/formulario.js"></script>
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>
