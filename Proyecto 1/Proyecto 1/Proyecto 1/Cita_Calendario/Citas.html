@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>Calendario Interactivo</title>
+</head>
+<body>
+
+<h1 class="title">Calendario de citas</h1>
+
+<div class="calendar">
+    <div class="calendar__info">
+        <div class="calendar__prev" id="prev-month">&#9664;</div>
+        <div class="calendar__month" id="month">Julio</div>
+        <div class="calendar__year" id="year"></div>
+        <div class="calendar__next" id="next-month">&#9654;</div>
+    </div>
+
+    <div class="calendar__week">
+        <div class="calendar__day calendar__item">Lun&nbsp;</div>
+        <div class="calendar__day calendar__item">Mar&nbsp;</div>
+        <div class="calendar__day calendar__item">Mie</div>
+        <div class="calendar__day calendar__item">Jue</div>
+        <div class="calendar__day calendar__item">Vie</div>
+        <div class="calendar__day calendar__item">Sab</div>
+        <div class="calendar__day calendar__item">Dom</div>
+    </div>
+
+    <div class="calendar__dates" id="dates"></div>
+</div>
+	<td width="33%" align="left" bgcolor="#572364" class="calSin">
+												<table border="0">
+													<tbody><tr>
+														<td>
+															<select name="dtoCita.id.idRango" onchange="colocaDescripcionHorario();">
+															<option></option><option value="49">08:00</option><option value="50">08:12</option><option value="51">08:24</option><option value="52">08:36</option><option value="53">08:48</option><option value="54">09:00</option><option value="55">09:12</option><option value="56">09:24</option><option value="57">09:36</option><option value="58">09:48</option><option value="59">10:00</option><option value="60">10:12</option><option value="61">10:24</option><option value="62">10:36</option><option value="63">10:48</option><option value="64">11:00</option><option value="65">11:12</option><option value="66">11:24</option><option value="67">11:36</option><option value="68">11:48</option><option value="69">12:00</option><option value="70">12:12</option><option value="71">12:24</option><option value="72">12:36</option><option value="73">12:48</option><option value="74">13:00</option><option value="75">13:12</option><option value="76">13:24</option><option value="77">13:36</option><option value="78">13:48</option><option value="79">14:00</option><option value="80">14:12</option><option value="81">14:24</option><option value="82">14:36</option><option value="83">14:48</option></select>
+														</td>
+														<td>
+															<img src="./html/img/ajax-loader_circulo.gif" style="display: none;" id="loader4">
+														</td>
+													</tr>
+												</tbody></table>
+											</td>
+	 <aside class="externalResourcesNav">
+    <div class="externalResources"><a href="#" title="Github Link">AGENDAR</a> </div>
+  </aside>
+	 <aside class="externalResourcesNav">
+    <div class="externalResources"><a href="file:///C:/Users/monse/Desktop/Proyecto%201/Sonrie%20Siempre/templatemo_535_softy_pinko/empleados.html" title="Github Link">REGRESAR</a> </div>
+  </aside>
+	
+
+<script src="js/scripts.js"></script>
+</body>
+</html>

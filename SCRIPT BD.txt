@@ -1,0 +1,194 @@
+create database Integradora;
+
+create table CLIENTE(ID_cliente serial primary key, nombre varchar(25) not null, ap_pat varchar(25) not null, ap_mat varchar(25) not null, email varchar(35)unique,
+edad int, sexo varchar(15) not null, telefono bigint unique, fecha_nac date not null, contraseña varchar (40) unique, foto_reciente varchar (30) default 'archivo adjunto');
+
+create table ADMINISTRADOR(ID_adm serial primary key, nom_adm varchar (20), ap_pat_adm varchar(25) not null, ap_mat_adm varchar(25) not null, email_adm varchar(35)unique, 
+telefono bigint unique, contraseña varchar (40) unique);
+
+create table PERSONAL (ID_usuario serial primary key, nombre_per varchar(25) not null, ap_pat_per varchar (25) not null, ap_mat_per varchar (25) not null, teléfono bigint unique, 
+email varchar(35)unique, contraseña varchar (40) unique, 
+ID_adm int,
+foreign key (ID_adm)references ADMINISTRADOR(ID_adm)on delete cascade on update cascade);
+
+create table CITA (Cod_cita serial primary key, fecha_cita date, hora varchar(10),
+ID_cliente int,
+foreign key (ID_cliente)references CLIENTE(ID_cliente)on delete cascade on update cascade);
+
+create table RECEPCIONISTA (ID_usuario int primary key,
+ID_usuario int,
+foreign key (ID_usuario)references PERSONAL (ID_usuario)on delete cascade on update cascade);
+
+create table ODONTOLOGO (ID_usuario int primary key,
+ced_prof varchar(25) unique,
+ID_usuario int,
+foreign key (ID_usuario)references PERSONAL (ID_usuario)on delete cascade on update cascade);
+
+create table CONSULTORIO (num_consultorio serial primary key, 
+ubicacion varchar (35) not null);
+
+create table ocupa (ID_usuario int, num_consultorio int, primary key(ID_usuario, num_consultorio),
+foreign key (ID_usuario)references ODONTOLOGO (ID_usuario)on delete cascade on update cascade,
+foreign key (num_consultorio)references CONSULTORIO(num_consultorio)on delete cascade on update cascade);
+
+create table SERVICIOS (cod_servicio serial primary key,
+nom_servicio varchar(35) not null, descripcion varchar (50) default 'service descr', costo_minimo varchar(25) default '$280');
+
+create table da (ID_usuario int, cod_servicio int, primary key (ID_usuario, cod_servicio),
+foreign key (ID_usuario)references ODONTOLOGO (ID_usuario)on delete cascade on update cascade,
+foreign key (cod_servicio)references SERVICIOS(cod_servicio)on delete cascade on update cascade);
+
+-------registros---------
+
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values ('Maria', 'Gonzalez', 'Castañeda','marygc@gmail.com', 25,
+'femenino', 5520114100,'25/03/1995','mariagonzalez');
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Alejandro', 'Martinez','Garcia', 'alexgg@outlook.es', 30,
+'masculino', 5588741125, '12/02/1991', 'alejandromartinez'); 
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Adrian','Ortiz','Garcia','nano98@gmail.com',12,
+'masculino', 5587895425, '08/08/2009', 'adrianortiz'); 
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Rodrigo','Morales', 'Villanueva', 'gogo@gmail.com', 21,
+'masculino', 5523697451, '05/01/2000', 'rodrigomorales'); 
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Enrique', 'Arroyo', 'Baez', 'noaharroyo@gmail.com', 18,
+'masculino',5587962014,'23/07/2002', 'enriquearroyo');  
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Diego', 'Estrada', 'Cielo', 'diegoesci@gmail.com', 18,
+'masculino', 5563210487,'20/09/2002', 'diegoestrada'); 
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Celic', 'Ortiz', 'Garcia', 'celicgar@gmail.com', 14,
+'femenino',5502365478, '08/03/2007', 'celicortiz'); 
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Ana', 'Cebada', 'Marquez', 'anamar@gmail.com',35, 
+'femenino',5530254878,'30/05/1996', 'anacebada');  
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Orli', 'Severiano', 'Cebada', 'amoamarklee@gmail.com', 15,
+'femenino', 5687124530,'30/06/2005', 'orliseveriano' );  
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Margarita', 'Gonzalez', 'Garcia', 'magohim@gmail.com', 60,
+'femenino', 5548153771,'10/06/1961', 'margaritagonzalez');  
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Xally', 'Huerta', 'Garcia', 'yotzysalazar@gmail.com', 20,
+'femenino', 5580892656, '08/06/2001', 'xallyhuerta');  
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Samara', 'Perez', 'Cernas', 'sammypc@gmail.com', 19,
+'femenino', 5542458974, '07/10/2001', 'samaraperez');  
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Adriana', 'Garcia', 'Gonzalez', 'adry554612@gmail.com', 41,
+'femenino', 5532795686,'21/09/1979', 'adrianagarcia');  
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Vanina', 'Beltramello', 'Dominguez', 'daechwita@gmail.com', 15,
+'femenino', 5587416523, '04/07/2005', 'vaninabeltramello');  
+insert into CLIENTE(nombre, ap_pat,ap_mat,email,edad,sexo, telefono, fecha_nac, contraseña) values('Said', 'Valdez', 'Rios', 'saidvr@gmail.com', 20,
+'masculino', 5587149651, '03/01/2001', 'saidvaldez');  
+
+insert into CITA(fecha_cita, hora, ID_cliente) values('20/06/2021','10:23',1);
+insert into CITA(fecha_cita, hora, ID_cliente) values('03/07/2021','11:00', 3);
+insert into CITA(fecha_cita, hora, ID_cliente) values('05/08/2021','02:35', 4);
+insert into CITA(fecha_cita, hora, ID_cliente) values('09/07/2021','08:40', 6);
+insert into CITA(fecha_cita, hora, ID_cliente) values('10/06/2021','11:50', 8);
+insert into CITA(fecha_cita, hora, ID_cliente) values('30/06/2021','05:20', 7);
+insert into CITA(fecha_cita, hora, ID_cliente) values('08/07/2021','04:30', 9);
+insert into CITA(fecha_cita, hora, ID_cliente) values('05/06/2021','12:05',10);
+insert into CITA(fecha_cita, hora, ID_cliente) values('02/08/2021', '05:30',5);
+insert into CITA(fecha_cita, hora, ID_cliente) values('15/07/2021', '12:50', 6);
+insert into CITA(fecha_cita, hora, ID_cliente) values('20/07/2021', '03:30',7);
+insert into CITA(fecha_cita, hora, ID_cliente) values('07/08/2021', '06:10',8);
+insert into CITA(fecha_cita, hora, ID_cliente) values('15/06/2021', '10:15', 20);
+insert into CITA(fecha_cita, hora, ID_cliente) values('12/07/2021', '04:20', 19);
+insert into CITA(fecha_cita, hora, ID_cliente) values('08/08/2021', '02:35', 6);
+
+insert into ADMINISTRADOR (nom_adm, ap_pat, ap_mat, email, telefono, contraseña) values('Armando', 'Perez', 'Lopez', 'arpl@gmail.com', 5580875421, 'armandolopez');
+insert into ADMINISTRADOR (nom_adm, ap_pat, ap_mat, email, telefono, contraseña) values('Lucia', 'Manzano', 'Zarazua', 'lucymm@gmail.com', 5502365696, 'luciamanzano');
+
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Ana', 'Hurtado', 'Zarate', 'hurza@gmail.com', 5587012369, 'anahurtado');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Marco', 'Moncada', 'Vazquez', 'marco@gmail.com', 5612587412, 'marcomoncada');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Cesar', 'Vidal', 'Tovar', 'cesar233@gmail.com', 5502306987, 'cesarvidal');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Sara', 'Mora', 'Nova', 'saranova@gmail.com', 5587101423, 'saramora');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Norma', 'Rios', 'Sainz', 'nomm@gmail.com', 5632847595, 'normarios');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Dolores', 'Tuna', 'Jimenez', 'lolatuu@gmail.com', 5581264236, 'dolorestuna');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Emmanuel', 'Salazar', 'Paredes', 'manutako@gmail.com', 5687020201, 'emmanuelsalazar');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Melany', 'Napan', 'Salazar', 'vuelveagusuconmigo@gmail.com', 5525687595, 'melanynapan');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Jessica', 'Morales', 'Rendon', 'jess@gmail.com', 5520302526, 'jessicamorales');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Amanda', 'Zarate', 'Zepeda', 'mandyzz@gmail.com', 5662534162, 'amandazarate');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Angelica', 'Marquez', 'Rios', 'angyrs@hotmail.com', 5526242529, 'angelicarios');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Fernando', 'Millan', 'Flores', 'nandomii@outlook.es', 5575669984, 'fernandomillan');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Danna', 'Patlan', 'Armendariz', 'dannicha@gmail.com', 5570895412, 'dannapatlan');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Sandra', 'Carmona', 'Mendoza', 'sandy099@gmail.com', 5608097543, 'sandracarmona');
+insert into PERSONAL(nombre, ap_pat, ap_mat, email, telefono, contraseña) values('Jazmin', 'Galindo', 'Guzman', 'rosagalindo@gmail.com', 5503060441, 'jazmingalindo');
+
+insert into RECEPCIONISTA values (1);
+insert into RECEPCIONISTA values (2);
+insert into RECEPCIONISTA values (3);
+
+insert into ODONTOLOGO values (4,784512254);
+insert into ODONTOLOGO values (5,845711225);
+insert into ODONTOLOGO values (7,789654411);
+insert into ODONTOLOGO values (9,102578455);
+insert into ODONTOLOGO values (11, 201455579);
+insert into ODONTOLOGO values (8,012578452);
+insert into ODONTOLOGO values (6,301478451);
+insert into ODONTOLOGO values (10,78021436);
+insert into ODONTOLOGO values (12,060458722);
+insert into ODONTOLOGO values (13,040587125);
+insert into ODONTOLOGO values (14,030210451);
+insert into ODONTOLOGO values (15,202145789);
+
+insert into CONSULTORIO (ubicacion) values('ala superior');
+insert into CONSULTORIO (ubicacion) values('odontopediatria');
+insert into CONSULTORIO (ubicacion) values('ala norte');
+insert into CONSULTORIO (ubicacion) values('sala posterior');
+insert into CONSULTORIO (ubicacion) values('maxilofacial');
+insert into CONSULTORIO (ubicacion) values('ala sur');
+insert into CONSULTORIO (ubicacion) values('ala posterior');
+insert into CONSULTORIO (ubicacion) values('ala norte');
+insert into CONSULTORIO (ubicacion) values('ala sureste');
+insert into CONSULTORIO (ubicacion) values('ala superior');
+insert into CONSULTORIO (ubicacion) values('ala suroeste');
+insert into CONSULTORIO (ubicacion) values('2do piso');
+insert into CONSULTORIO (ubicacion) values('3er piso');
+insert into CONSULTORIO (ubicacion) values('ala norte');
+insert into CONSULTORIO (ubicacion) values('planta baja');
+
+
+insert into ocupa values (3,1);
+insert into ocupa values (4,2);
+insert into ocupa values (4,3);
+insert into ocupa values (5,5);
+insert into ocupa values (5,7);
+insert into ocupa values (6,4);
+insert into ocupa values (7,6);
+insert into ocupa values (8,8);
+insert into ocupa values (9,10);
+insert into ocupa values (10,9);
+insert into ocupa values (11,15);
+insert into ocupa values (12,11);
+insert into ocupa values (13,12);
+insert into ocupa values (14,14);
+insert into ocupa values (1513);
+
+insert into SERVICIOS(nom_servicio) values('limpieza');
+insert into SERVICIOS(nom_servicio) values('protesis');
+insert into SERVICIOS(nom_servicio) values('brackets');
+insert into SERVICIOS(nom_servicio) values('extraccion');
+insert into SERVICIOS(nom_servicio) values('endodoncia');
+insert into SERVICIOS(nom_servicio) values('maxilofacial');
+insert into SERVICIOS(nom_servicio) values('odontopediatria');
+insert into SERVICIOS(nom_servicio) values('cirugia');
+insert into SERVICIOS(nom_servicio) values('frenos');
+insert into SERVICIOS(nom_servicio) values('placas');
+insert into SERVICIOS(nom_servicio) values('radiografias');
+insert into SERVICIOS(nom_servicio) values('coronillas');
+insert into SERVICIOS(nom_servicio) values('remocion de caries');
+insert into SERVICIOS(nom_servicio) values('ortodoncia');
+insert into SERVICIOS(nom_servicio) values('blanqueamiento');
+
+insert into da values (4,2);
+insert into da values (6,5);
+insert into da values (5,2);
+insert into da values (5,7);
+insert into da values (7,3);
+insert into da values (7,9);
+insert into da values (5,8);
+insert into da values (5,9);
+insert into da values (4,7);
+insert into da values (6,2);
+insert into da values (9,4);
+insert into da values (8,6);
+insert into da values (7,1);
+insert into da values (10,11);
+insert into da values (15,10);
+
+
+
+
+
